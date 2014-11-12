@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  price: 1
+  type: 
+  feature: MyString
+  location: MyString
+  picture: MyString
+  name: MyString
+  website: MyString
+  open: 1
+  close: 1
+  capacity: 1
+
+two:
+  price: 1
+  type: 
+  feature: MyString
+  location: MyString
+  picture: MyString
+  name: MyString
+  website: MyString
+  open: 1
+  close: 1
+  capacity: 1
