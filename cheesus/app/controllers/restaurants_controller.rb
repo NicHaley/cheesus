@@ -10,7 +10,8 @@ class RestaurantsController < ApplicationController
   # GET /restaurants/1
   # GET /restaurants/1.json
   def show
-    @current_user= true
+    @restaurant = Restaurant.find(params[:id])
+    @review = @restaurant.reviews.build
   end
 
   # GET /restaurants/new
