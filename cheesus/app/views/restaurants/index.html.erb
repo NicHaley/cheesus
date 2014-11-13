@@ -18,13 +18,13 @@
   </thead>
 
   <tbody>
-    <% @restaurants.each do |restaurant| %>
+    <% @restaurant.each do |restaurant| %>
       <tr>
         <td><%= restaurant.price %></td>
-        <td><%= restaurant.type %></td>
+        <td><%= restaurant.cuisine_type %></td>
         <td><%= restaurant.feature %></td>
         <td><%= restaurant.location %></td>
-        <td><%= link_to image_tag(restaurant.picture), "/restaurants/#{restaurant.id}" %></td>
+        <td><%= link_to image_tag(restaurant.picture, :height=> "80"), "/restaurants/#{restaurant.id}" %></td>
         <td><%= restaurant.name %></td>
         <td><%= restaurant.website %></td>
         <td><%= restaurant.open %></td>

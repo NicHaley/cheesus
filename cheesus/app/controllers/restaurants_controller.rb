@@ -4,12 +4,13 @@ class RestaurantsController < ApplicationController
   # GET /restaurants
   # GET /restaurants.json
   def index
-    @restaurants = Restaurant.all
+    @restaurant = Restaurant.all
   end
 
   # GET /restaurants/1
   # GET /restaurants/1.json
   def show
+    @current_user= true
   end
 
   # GET /restaurants/new
@@ -69,6 +70,6 @@ class RestaurantsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def restaurant_params
-      params.require(:restaurant).permit(:price, :type, :feature, :location, :picture, :name, :website, :open, :close, :capacity)
+      params.require(:restaurant).permit(:price, :cuisine_type, :feature, :location, :picture, :name, :website, :open, :close, :capacity)
     end
 end
