@@ -24,7 +24,7 @@
         <td><%= restaurant.type %></td>
         <td><%= restaurant.feature %></td>
         <td><%= restaurant.location %></td>
-        <td><%= restaurant.picture %></td>
+        <td><%= link_to image_tag(restaurant.picture), "/restaurants/#{restaurant.id}" %></td>
         <td><%= restaurant.name %></td>
         <td><%= restaurant.website %></td>
         <td><%= restaurant.open %></td>
