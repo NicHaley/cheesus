@@ -1,0 +1,2 @@
+module RSessionsHelper
+end

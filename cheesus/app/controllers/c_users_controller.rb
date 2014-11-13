@@ -11,4 +11,9 @@ class CUsersController < ApplicationController
   			render "new"
   		end
   end
+
+  private
+  def c_user_params
+    params.require(:c_user).permit(:email, :password, :password_confirmation, :name, :url)
+  end
 end
