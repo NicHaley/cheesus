@@ -1,11 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'reservations/show'
-
-  get 'reservations/create'
-
-  get 'reservations/destroy'
-
   root 'restaurants#index'
   
   resources :c_sessions, only: [:new, :create, :destroy]
@@ -13,7 +7,8 @@ Rails.application.routes.draw do
   resources :c_users, only: [:new, :create]
   resources :r_users, only: [:new, :create]
   resources :restaurants do
-      resources :reviews, only:  [:show, :create, :destroy]
+    resources :reservations, only:  [:show, :create, :destroy]
+    resources :reviews, only:  [:show, :create, :destroy]
   end
 
 

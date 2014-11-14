@@ -51,6 +51,18 @@
   <%= @restaurant.capacity %>
 </p>
 
+<!-- For reservation input -->
+  <%= form_for([@restaurant, @reservation]) do |f| %>
+    <div class="field">
+      <%= f.label :party_size %><br />
+      <%= f.number_field :party_size %>
+    </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+  <% end %>
+
+
 <h3>Reviews</h3>
 
   <p>Reviews for <%= @restaurant.name %></p>
