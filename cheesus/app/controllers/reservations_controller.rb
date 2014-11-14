@@ -7,10 +7,11 @@ class ReservationsController < ApplicationController
 
 	def create
 		@reservation = @restaurant.reservations.build(reservation_params)
-		@reservation.user = current_user
+		@reservation.c_user = c_current_user
+		# @restaurant.available
 
 		if @reservation.save
-			redirect_to restaurants_path, notice: 'reservation created successfully'
+			redirect_to restaurants_path, notice: 'Reservation created successfully'
 		else
 			render 'restaurant/show'
 		end

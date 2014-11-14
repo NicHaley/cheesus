@@ -7,7 +7,7 @@ class ReviewsController < ApplicationController
 
   def create
   	@review = @restaurant.reviews.build(review_params)
-    @review.user = current_user
+    @review.c_user = c_current_user
 
     if @review.save
       redirect_to restaurants_path, notice: 'Review created successfully'
@@ -23,7 +23,7 @@ class ReviewsController < ApplicationController
 
   private
   def review_params
-    params.require(:review).permit(:comment, :restaurant_id)
+    params.require(:review).permit(:comments, :restaurant_id)
   end
 
   def load_restaurant

@@ -1,8 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Picture:</strong>
-  <%= @restaurant.picture %>
+  <%= image_tag(@restaurant.picture, :height=> "80") %>
 </p>
 
 
@@ -52,56 +51,68 @@
 </p>
 
 <!-- For reservation input -->
-  <%= form_for([@restaurant, @reservation]) do |f| %>
-    <div class="field">
-      <%= f.label :party_size %><br />
-      <%= f.number_field :party_size %>
-    </div>
-    <div class="actions">
-      <%= f.submit %>
-    </div>
-  <% end %>
+<%= form_for([@restaurant, @reservation]) do |f| %>
+<div class="field">
+  <%= f.label :party_size %><br />
+  <%= f.number_field :party_size %>
+</div>
+
+<div class="field">
+  <%= f.label :arrive_time %><br />
+  <%= f.time_select(:arrive, discard_minute: true, prompt: {hour: 'Choose Hour'}, start_hour: @restaurant.open, end_hour: @restaurant.close)%>
+</div>
+
+<div class="field">
+  <%= f.label :date %><br />
+  <%= f.date_select(:date, :start_year => Date.current.year, :end_year => Date.current.year + 1)  %>
+</div>
+
+<div class="actions">
+  <%= f.submit %>
+</div>
+<% end %>
 
 
 <h3>Reviews</h3>
 
-  <p>Reviews for <%= @restaurant.name %></p>
+<p>Reviews for <%= @restaurant.name %></p>
 
-  <% @restaurant.reviews.each do |review| %>
-    <p>
-      <%= review.comments %>
-      <br>
-      <% if review.c_user != nil %>
-        <em> by <%= review.c_user.email %></em>
-        Added on: <%= review.created_at %>
-      <% end %>
-    </p>
+<% @restaurant.reviews.each do |review| %>
+<p>
+  <%= review.comments %>
+  <br>
+  <% if review.c_user != nil %>
+  <em> by <%= review.c_user.name %></em>
+  Added on: <%= review.created_at %>
   <% end %>
+</p>
+<% end %>
 
-    <% if @review.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved:</h2>
+<% if @review.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved:</h2>
 
-        <ul>
-        <% @review.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-        </ul>
-      </div>
+  <ul>
+    <% @review.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
     <% end %>
+  </ul>
+</div>
+<% end %>
 
-  <h4>New Review</h4>
+<% if c_current_user %>
+<h4>New Review</h4>
 
-  <%= form_for([@restaurant, @review]) do |f| %>
-    <div class="field">
-      <%= f.label :comments %><br />
-      <%= f.text_area :comments, size: "60x12"%>
-    </div>
-    <div class="actions">
-      <%= f.submit %>
-    </div>
-  <% end %>
-
+<%= form_for([@restaurant, @review]) do |f| %>
+<div class="field">
+  <%= f.label :comments %><br />
+  <%= f.text_area :comments, size: "60x12"%>
+</div>
+<div class="actions">
+  <%= f.submit %>
+</div>
+<% end %>
+<% end %>
 
 <%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
 <%= link_to 'Back', restaurants_path %>
