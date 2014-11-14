@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  party_size: 1
+  restaurant_id: 1
+  arrive: 2014-11-14 09:06:58
+  date: 2014-11-14
+  c_user_id: 1
+  c_user_id: 
+  restaurant_id: 
+
+two:
+  party_size: 1
+  restaurant_id: 1
+  arrive: 2014-11-14 09:06:58
+  date: 2014-11-14
+  c_user_id: 1
+  c_user_id: 
+  restaurant_id: 

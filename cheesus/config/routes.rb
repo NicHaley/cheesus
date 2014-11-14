@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  get 'reservations/show'
+
+  get 'reservations/create'
+
+  get 'reservations/destroy'
+
   root 'restaurants#index'
   
   resources :c_sessions, only: [:new, :create, :destroy]
