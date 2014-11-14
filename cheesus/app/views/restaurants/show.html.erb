@@ -51,27 +51,7 @@
 </p>
 
 <!-- For reservation input -->
-<%= form_for([@restaurant, @reservation]) do |f| %>
-<div class="field">
-  <%= f.label :party_size %><br />
-  <%= f.number_field :party_size %>
-</div>
-
-<div class="field">
-  <%= f.label :arrive_time %><br />
-  <%= f.time_select(:arrive, discard_minute: true, prompt: {hour: 'Choose Hour'}, start_hour: @restaurant.open, end_hour: @restaurant.close)%>
-</div>
-
-<div class="field">
-  <%= f.label :date %><br />
-  <%= f.date_select(:date, :start_year => Date.current.year, :end_year => Date.current.year + 1)  %>
-</div>
-
-<div class="actions">
-  <%= f.submit %>
-</div>
-<% end %>
-
+<%= link_to 'Make A Reservation', new_restaurant_reservation_path(@restaurant, @reservation) %>
 
 <h3>Reviews</h3>
 
