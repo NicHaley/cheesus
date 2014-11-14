@@ -6,10 +6,11 @@
 
 <div class="field">
   <%= f.label :date %><br />
-  <%= f.datetime_select(:date, discard_minute: true, :start_year => Date.current.year, :end_year => Date.current.year + 1)  %>
+  <%= f.datetime_select(:date, discard_minute: true, :start_hour => @restaurant.open, :end_hour => @restaurant.close, :start_year => Date.current.year, :end_year => Date.current.year + 1)  %>
 </div>
 
 <div class="actions">
   <%= f.submit %>
 </div>
 <% end %>
+

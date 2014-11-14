@@ -2,8 +2,8 @@ class ReservationsController < ApplicationController
 	before_filter :load_restaurant
 
 	def new
-		# @reservation = Reservation.find(params[:id])
-		# @restaurant = Restaurant.find(params[:id])
+		@reservation = Reservation.new
+		@restaurant = Restaurant.find(params[:restaurant_id])
 	end
 
 	def show
@@ -17,7 +17,8 @@ class ReservationsController < ApplicationController
 		if @reservation.save
 			redirect_to restaurants_path, notice: 'Reservation created successfully'
 		else
-			render 'restaurants/show'
+			flash.now[:alert] ='Your party size exceeds capcity'
+			render 'reservations/new'
 		end
 	end
 
