@@ -6,7 +6,8 @@ class RestaurantsController < ApplicationController
   # GET /restaurants
   # GET /restaurants.json
   def index
-    @restaurant = Restaurant.all
+    @search = Restaurant.search(params[:q]) 
+    @restaurant = @search.result
   end
 
   # GET /restaurants/1
@@ -77,4 +78,4 @@ class RestaurantsController < ApplicationController
     def restaurant_params
       params.require(:restaurant).permit(:price, :cuisine_type, :feature, :location, :picture, :name, :website, :open, :close, :capacity)
     end
-end
+  end

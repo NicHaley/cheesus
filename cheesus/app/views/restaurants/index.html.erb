@@ -1,28 +1,36 @@
 <h1>Listing restaurants</h1>
 
-<table >
+<table class="table table-hover">
   <thead>
     <tr>
-      <th>Price</th>
-      <th>Type</th>
-      <th>Feature</th>
-      <th>Location</th>
-      <th>Picture</th>
-      <th>Name</th>
-      <th>Website</th>
-      <th>Open</th>
-      <th>Close</th>
-      <th>Capacity</th>
-      <th colspan="3"></th>
+      <th></th>
+      <th><%= sort_link @search, :name, "Name" %></th>
+      <th><%= sort_link @search, :cuisine_type, "Cuisine" %></th>
+      <th><%= sort_link @search, :location, "Location" %></th>
+      <th><%= sort_link @search, :price, "Price" %></th>
+      <th colspan="1"></th>
     </tr>
   </thead>
 
   <tbody>
 
+    <div class="search">
+      <%= search_form_for @search do |f| %>
+      <div class="field">
+        <%= f.text_field :name_cont %>
+      </div>
+      <div class="actions"><%= f.submit "Search"%></div>
+      <% end %>
+    </div>
+
     <tr>
       <% @restaurant.each do |restaurant| %>
       <td><%= link_to image_tag(restaurant.picture, :height=> "80"), "/restaurants/#{restaurant.id}" %></td>
+      <td><%= restaurant.name %></td>
+      <td><%= restaurant.cuisine_type %></td>
+      <td><%= restaurant.location %></td>
       <td>
+        <% restaurant.price %>
         <% case restaurant.price %>
         <% when 1 %>
         $
@@ -34,14 +42,6 @@
         $$$$
         <% end %>
       </td>
-      <td><%= restaurant.cuisine_type %></td>
-      <td><%= restaurant.feature %></td>
-      <td><%= restaurant.location %></td>
-      <td><%= restaurant.name %></td>
-      <td><%= restaurant.website %></td>
-      <td><%= restaurant.open %></td>
-      <td><%= restaurant.close %></td>
-      <td><%= restaurant.capacity %></td>
       <td><%= link_to 'Show', restaurant %></td>
 
     </tr>
@@ -50,5 +50,5 @@
 </table>
 
 <% if r_current_user %>
-  <%= link_to 'Add New Restaurant', new_restaurant_path %>
+<%= link_to 'Add New Restaurant', new_restaurant_path %>
 <% end %>
