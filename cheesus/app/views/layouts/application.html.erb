@@ -5,13 +5,14 @@
 	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
 	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 	<%= csrf_meta_tags %>
+	<link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
 </head>
 <body>
 	<nav class="navbar navbar-default" role="navigation">
 		<div class="container">
 			<div class="navbar-header">
-				<div id="title">Cheesus</div>
-				<%= link_to image_tag("cheesus.png", :height=> "80"), "/" %>
+				<%= link_to image_tag("cheesus.png", :height=> "100"), "/" %>
+				<div id="title"><a href="/">Cheesus </a> <p>"Book your last supper!"</p></div>
 				</div>
 				<p class="cuserinfo">
 				<% if c_current_user  %>

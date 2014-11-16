@@ -2,3 +2,45 @@
 	float: right;
 	display: inline-block;
 }
+
+#title {
+	font-family: 'Lobster', cursive;
+	font-size: 35pt;
+	display: inline-block;
+	}
+
+#title p {
+	font-size: 12pt;
+	color: #eed333;
+	padding-top: -20px;
+	text-shadow: 1px 1px 4px #000000;
+}
+
+.navbar {
+	padding-top:10px;
+	padding-bottom:10px;
+}
+
+a:link {
+    color: #3b5998;
+}
+
+/* visited link */
+a:visited {
+    color: #3b5998;
+}
+
+/* mouse over link */
+a:hover {
+    color: #191970;
+    text-decoration: none;
+}
+
+/* selected link */
+a:active {
+    color: #191970;
+}
+
+.btn-restaurant {
+	color: #FFFFFF;
+}  

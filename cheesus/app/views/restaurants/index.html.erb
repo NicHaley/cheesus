@@ -1,4 +1,14 @@
-<h1>Listing restaurants</h1>
+<center><h1>Restaurant List</h1>
+
+      <div class="search">
+      <%= search_form_for @search do |f| %>
+      <div class="field">
+        <%= f.text_field :name_cont %>
+      </div><br/>
+      <div class="actions"><%= button_tag "Search", class: "btn btn-warning" %></div>
+      <% end %>
+    </div>
+</center>
 
 <table class="table table-hover">
   <thead>
@@ -13,15 +23,6 @@
   </thead>
 
   <tbody>
-
-    <div class="search">
-      <%= search_form_for @search do |f| %>
-      <div class="field">
-        <%= f.text_field :name_cont %>
-      </div>
-      <div class="actions"><%= f.submit "Search"%></div>
-      <% end %>
-    </div>
 
     <tr>
       <% @restaurant.each do |restaurant| %>
@@ -50,5 +51,7 @@
 </table>
 
 <% if r_current_user %>
-<%= link_to 'Add New Restaurant', new_restaurant_path %>
+<button type="button" class="btn btn-warning">
+<%= link_to 'Add New Restaurant', new_restaurant_path, class: "btn-restaurant" %>
+</button>
 <% end %>
