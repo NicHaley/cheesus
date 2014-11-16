@@ -18,27 +18,35 @@
   </thead>
 
   <tbody>
-    <% @restaurant.each do |restaurant| %>
-      <tr>
-        <td><%= restaurant.price %></td>
-        <td><%= restaurant.cuisine_type %></td>
-        <td><%= restaurant.feature %></td>
-        <td><%= restaurant.location %></td>
-        <td><%= link_to image_tag(restaurant.picture, :height=> "80"), "/restaurants/#{restaurant.id}" %></td>
-        <td><%= restaurant.name %></td>
-        <td><%= restaurant.website %></td>
-        <td><%= restaurant.open %></td>
-        <td><%= restaurant.close %></td>
-        <td><%= restaurant.capacity %></td>
-        <td><%= link_to 'Show', restaurant %></td>
-        <td><%= link_to 'Edit', edit_restaurant_path(restaurant) %></td>
-        <td><%= link_to 'Destroy', restaurant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+
+    <tr>
+      <% @restaurant.each do |restaurant| %>
+      <td><%= link_to image_tag(restaurant.picture, :height=> "80"), "/restaurants/#{restaurant.id}" %></td>
+      <td>
+        <% case restaurant.price %>
+        <% when 1 %>
+        $
+        <% when 2 %>
+        $$
+        <% when 3 %>
+        $$$
+        <% when 4 %>
+        $$$$
+        <% end %>
+      </td>
+      <td><%= restaurant.cuisine_type %></td>
+      <td><%= restaurant.feature %></td>
+      <td><%= restaurant.location %></td>
+      <td><%= restaurant.name %></td>
+      <td><%= restaurant.website %></td>
+      <td><%= restaurant.open %></td>
+      <td><%= restaurant.close %></td>
+      <td><%= restaurant.capacity %></td>
+      <td><%= link_to 'Show', restaurant %></td>
+
+    </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Restaurant', new_restaurant_path %>
-
+<%= link_to 'Add New Restaurant', new_restaurant_path %>

@@ -17,9 +17,16 @@ class ApplicationController < ActionController::Base
 
   helper_method :r_current_user
 
-  def ensure_logged_in
-    unless c_current_user || r_current_user
-      flash[:alert] = "Please log in"
+  def ensure_c_logged_in
+    unless c_current_user
+      flash[:alert] = "Please log in as a customer user."
+      redirect_to new_c_session_path #fix to login page for both
+    end
+  end
+
+   def ensure_r_logged_in
+    unless r_current_user
+      flash[:alert] = "Please log in as a restaurant user."
       redirect_to root_path #fix to login page for both
     end
   end

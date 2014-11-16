@@ -1,4 +1,5 @@
 class RUsersController < ApplicationController
+
   def new
   	@r_user = RUser.new
   end
@@ -6,7 +7,7 @@ class RUsersController < ApplicationController
   def create
   	@r_user = RUser.new(r_user_params)
   		if @r_user.save 
-  			redirect_to new_restaurant_url, notice: "Signed up!"
+  			redirect_to new_r_session_url, notice: "Signed up!"
   		else
   			render "new"
   		end

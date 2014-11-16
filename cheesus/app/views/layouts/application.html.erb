@@ -7,13 +7,18 @@
 	<%= csrf_meta_tags %>
 </head>
 <body>
-	<p class="cuserinfo">
-		<% if c_current_user %>
-		Signed in as <%= c_current_user.name %>. <%= link_to "Log out", c_session_path("current"), :method => :delete %>
-		<% else %>
-		<%= link_to "Log in", new_c_session_path %> or <%= link_to "Sign up", new_c_user_path %>
-		<% end %>
-	</p>
+	<nav>
+		<%= link_to 'Main', restaurants_path %>
+		<p class="cuserinfo">
+			<% if c_current_user  %>
+			Signed in as <%= c_current_user.name %>. <%= link_to "Log out", c_session_path("current"), :method => :delete %>
+			<% elsif r_current_user %>
+			Signed in as <%= r_current_user.name %>. <%= link_to "Log out", r_session_path("current"), :method => :delete %>
+			<% else %>
+			<%= link_to "Log in", new_c_session_path %> or <%= link_to "Sign up", new_c_user_path %>
+			<% end %>
+		</p>
+	</nav>
 	<% if flash[:notice] %>
 	<p id="notice"><%= flash[:notice] %></p>
 	<% end %>

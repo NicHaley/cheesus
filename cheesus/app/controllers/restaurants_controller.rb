@@ -1,5 +1,7 @@
 class RestaurantsController < ApplicationController
   before_action :set_restaurant, only: [:show, :edit, :update, :destroy]
+  before_filter :ensure_r_logged_in, only: [:create, :update, :destroy]
+
 
   # GET /restaurants
   # GET /restaurants.json
@@ -28,6 +30,7 @@ class RestaurantsController < ApplicationController
   # POST /restaurants.json
   def create
     @restaurant = Restaurant.new(restaurant_params)
+    @restaurant.r_user = r_current_user
 
     respond_to do |format|
       if @restaurant.save

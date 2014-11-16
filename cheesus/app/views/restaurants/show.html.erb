@@ -50,8 +50,9 @@
   <%= @restaurant.capacity %>
 </p>
 
-<!-- For reservation input -->
+<% if c_current_user %>
 <%= link_to 'Make A Reservation', new_restaurant_reservation_path(@restaurant, @reservation) %>
+<% end %>
 
 <h3>Reviews</h3>
 
@@ -94,5 +95,8 @@
 <% end %>
 <% end %>
 
-<%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
-<%= link_to 'Back', restaurants_path %>
+<% if @restaurant.r_user == r_current_user %>
+<%= link_to 'Destroy', @restaurant, method: :delete, data: { confirm: 'Are you sure?' } %>
+<%= link_to 'Edit', edit_restaurant_path(@restaurant) %>
+<% end %>
+
