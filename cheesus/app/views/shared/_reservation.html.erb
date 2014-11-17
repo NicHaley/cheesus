@@ -1,0 +1,20 @@
+<% if c_current_user %>
+	<%= form_for([@restaurant, @reservation]) do |f| %>
+	<div class="field">
+		<%= f.label :party_size %><br />
+		<%= f.number_field :party_size %>
+	</div>
+
+	<div class="field">
+		<%= f.label :date %><br />
+		<%= f.datetime_select(:date, discard_minute: true, :start_hour => @restaurant.open, :end_hour => @restaurant.close, :start_year => Date.current.year, :end_year => Date.current.year + 1)  %>
+	</div>
+
+	<div class="actions">
+		<%= f.submit %>
+	</div>
+	<% end %>
+	<% else %>
+	<p>You must be signed in as a customer to make a reservation.</p>
+
+<% end %>

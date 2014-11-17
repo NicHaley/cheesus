@@ -1,7 +1,5 @@
-
-
 <%= form_tag r_sessions_path do %>
-	<h2> Please sign in</h2>
+	<h1>Restaurant Log In</h1>
 		<div class="field">
 			<%= label_tag :email %><br/>
 			<%= text_field_tag :email, params[:email], placeholder: "Email address" %>
@@ -14,5 +12,4 @@
 			<%= button_tag "Log in" %>
 		</div>
 	<br/>
-	<%= link_to "Go Back", root_path %>
 <% end %>

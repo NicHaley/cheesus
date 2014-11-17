@@ -1,38 +1,24 @@
-<h1>Sign Up</h1>
+<div role="tabpanel">
 
-<%= form_for @r_user do |f| %>
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active">
+      <a href="#tab1" aria-controls="tab1" role="tab" data-toggle="tab">Sign Up</a>
+    </li>
+    <li role="presentation">
+      <a href="#tab2" aria-controls="tab2" role="tab" data-toggle="tab">Log In</a>
+    </li>
+  </ul>
 
-  <% if @r_user.errors.any? %>
-    <div class="error_messages">
-      <h2>Form is invalid</h2>
-      <ul>
-        <% for message in @r_user.errors.full_messages %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br/>
-    <%= f.text_field :name %>
+  <div class="tab-content">
+   <div role="tabpanel" class="tab-pane active" id="tab1">
+    <%= render 'shared/rsignup' %>
   </div>
 
-  <div class="field">
-    <%= f.label :email %><br/>
-    <%= f.text_field :email %>
+  <div role="tabpanel" class="tab-pane" id="tab2">
+    <%= render 'shared/rlogin' %>
   </div>
 
-  <div class="field">
-    <%= f.label :password %><br/>
-    <%= f.password_field :password %>
-  </div>
+</div>
+</div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br/>
-    <%= f.password_field :password_confirmation %>
-  </div>
 
-  <div class="actions"><%= f.submit "Submit"%></div>
-
-<% end %>

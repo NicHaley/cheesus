@@ -1,102 +1,120 @@
-<p id="notice"><%= notice %></p>
+<div role="tabpanel">
 
-<p>
-  <%= image_tag(@restaurant.picture, :height=> "300") %>
-</p>
-
-
-<p>
-  <strong>Price:</strong>
-  <%= @restaurant.price %>
-</p>
-
-<p>
-  <strong>Type:</strong>
-  <%= @restaurant.cuisine_type %>
-</p>
-
-<p>
-  <strong>Feature:</strong>
-  <%= @restaurant.feature %>
-</p>
-
-<p>
-  <strong>Location:</strong>
-  <%= @restaurant.location %>
-</p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @restaurant.name %>
-</p>
-
-<p>
-  <strong>Website:</strong>
-  <%= @restaurant.website %>
-</p>
-
-<p>
-  <strong>Open:</strong>
-  <%= @restaurant.open %>
-</p>
-
-<p>
-  <strong>Close:</strong>
-  <%= @restaurant.close %>
-</p>
-
-<p>
-  <strong>Capacity:</strong>
-  <%= @restaurant.capacity %>
-</p>
-
-<% if c_current_user %>
-<%= link_to 'Make A Reservation', new_restaurant_reservation_path(@restaurant, @reservation) %>
-<% end %>
-
-<h3>Reviews</h3>
-
-<p>Reviews for <%= @restaurant.name %></p>
-
-<% @restaurant.reviews.each do |review| %>
-<p>
-  <%= review.comments %>
-  <br>
-  <% if review.c_user != nil %>
-  <em> by <%= review.c_user.name %></em>
-  Added on: <%= review.created_at %>
-  <% end %>
-</p>
-<% end %>
-
-<% if @review.errors.any? %>
-<div id="error_explanation">
-  <h2><%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved:</h2>
-
-  <ul>
-    <% @review.errors.full_messages.each do |msg| %>
-    <li><%= msg %></li>
-    <% end %>
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active">
+      <a href="#tab1" aria-controls="tab1" role="tab" data-toggle="tab">Info</a>
+    </li>
+    <li role="presentation">
+      <a href="#tab2" aria-controls="tab2" role="tab" data-toggle="tab">Reviews</a>
+    </li>
+    <li role="presentation">
+      <a href="#tab3" aria-controls="tab3" role="tab" data-toggle="tab">Reservations</a>
+    </li>
   </ul>
-</div>
-<% end %>
 
-<% if c_current_user %>
-<h4>New Review</h4>
+  <div class="tab-content">
+   <div role="tabpanel" class="tab-pane active" id="tab1">
+    <p id="notice"><%= notice %></p>
 
-<%= form_for([@restaurant, @review]) do |f| %>
-<div class="field">
-  <%= f.label :comments %><br />
-  <%= f.text_area :comments, size: "60x12"%>
-</div>
-<div class="actions">
-  <%= f.submit %>
-</div>
-<% end %>
-<% end %>
+    <p>
+      <%= image_tag(@restaurant.picture, :height=> "300") %>
+    </p>
 
-<% if @restaurant.r_user == r_current_user %>
-<%= link_to 'Destroy', @restaurant, method: :delete, data: { confirm: 'Are you sure?' } %>
-<%= link_to 'Edit', edit_restaurant_path(@restaurant) %>
-<% end %>
+
+    <p>
+      <strong>Price:</strong>
+      <%= @restaurant.price %>
+    </p>
+
+    <p>
+      <strong>Type:</strong>
+      <%= @restaurant.cuisine_type %>
+    </p>
+
+    <p>
+      <strong>Feature:</strong>
+      <%= @restaurant.feature %>
+    </p>
+
+    <p>
+      <strong>Location:</strong>
+      <%= @restaurant.location %>
+    </p>
+
+    <p>
+      <strong>Name:</strong>
+      <%= @restaurant.name %>
+    </p>
+
+    <p>
+      <strong>Website:</strong>
+      <%= @restaurant.website %>
+    </p>
+
+    <p>
+      <strong>Open:</strong>
+      <%= @restaurant.open %>
+    </p>
+
+    <p>
+      <strong>Close:</strong>
+      <%= @restaurant.close %>
+    </p>
+
+    <p>
+      <strong>Capacity:</strong>
+      <%= @restaurant.capacity %>
+    </p>
+
+    <% if c_current_user %>
+    <h4>New Review</h4>
+
+    <%= form_for([@restaurant, @review]) do |f| %>
+    <div class="field">
+      <%= f.label :comments %><br />
+      <%= f.text_area :comments, size: "60x12"%>
+    </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+    <% end %>
+    <% end %>
+
+    <% if @restaurant.r_user == r_current_user %>
+    <%= link_to 'Destroy', @restaurant, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <%= link_to 'Edit', edit_restaurant_path(@restaurant) %>
+    <% end %>
+  </div>
+
+  <div role="tabpanel" class="tab-pane" id="tab2">
+    <h3>Reviews</h3>
+
+    <% @restaurant.reviews.each do |review| %>
+    <p>
+      <%= review.comments %>
+      <br>
+      <% if review.c_user != nil %>
+      <em> by <%= review.c_user.name %></em>
+      Added on: <%= review.created_at %>
+      <% end %>
+    </p>
+    <% end %>
+
+    <% if @review.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved:</h2>
+
+      <ul>
+        <% @review.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+    <% end %>
+  </div>
+  <div role="tabpanel" class="tab-pane" id="tab3">
+    <%= render 'shared/reservation' %>
+ </div>
+</div>
+</div>
 

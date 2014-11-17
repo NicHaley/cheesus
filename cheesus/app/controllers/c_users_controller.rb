@@ -6,7 +6,7 @@ class CUsersController < ApplicationController
   def create
   		@c_user = CUser.new(c_user_params)
   		if @c_user.save 
-  			redirect_to new_c_session_url, notice: "Signed up!"
+  			redirect_to new_c_user_url, notice: "Signed up!"
   		else
   			render "new"
   		end
