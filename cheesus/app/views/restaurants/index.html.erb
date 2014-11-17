@@ -1,5 +1,6 @@
-<center><h1>Restaurant List</h1>
-
+<h2>Restaurant List</h2>
+  
+  <div class="restaurant-form">
       <div class="search">
       <%= search_form_for @search do |f| %>
       <div class="field">
@@ -8,7 +9,7 @@
       <div class="actions"><%= button_tag "Search", class: "btn btn-warning" %></div>
       <% end %>
     </div>
-</center>
+  </div>
 
 <table class="table table-hover">
   <thead>
@@ -27,23 +28,25 @@
     <tr>
       <% @restaurant.each do |restaurant| %>
       <td><%= link_to image_tag(restaurant.picture, :height=> "80"), "/restaurants/#{restaurant.id}" %></td>
-      <td><%= restaurant.name %></td>
-      <td><%= restaurant.cuisine_type %></td>
-      <td><%= restaurant.location %></td>
-      <td>
+      <td class="tr-restaurant"><%= restaurant.name %></td>
+      <td class="tr-restaurant"><%= restaurant.cuisine_type %></td>
+      <td class="tr-restaurant"><%= restaurant.location %></td>
+      <td class="tr-restaurant">
         <% restaurant.price %>
         <% case restaurant.price %>
         <% when 1 %>
-        $
+        <%= link_to image_tag("dollar1.png", :height=> "30"), "/" %>
         <% when 2 %>
-        $$
+        <%= link_to image_tag("dollar2.png", :height=> "30"), "/" %>
         <% when 3 %>
-        $$$
+        <%= link_to image_tag("dollar3.png", :height=> "30"), "/" %>
         <% when 4 %>
-        $$$$
+        <%= link_to image_tag("dollar4.png", :height=> "30"), "/" %>
+        <% when 5 %>
+        <%= link_to image_tag("dollar5.png", :height=> "30"), "/" %>
         <% end %>
       </td>
-      <td><%= link_to 'Show', restaurant %></td>
+      <td class="tr-restaurant"><%= link_to 'Show', restaurant %></td>
 
     </tr>
     <% end %>
